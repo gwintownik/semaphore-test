@@ -53,6 +53,14 @@
           - docker-buildx-plugin
         update_cache: yes
 
-    # add the current user to the docker group
-    - name: add user permissions
-      shell: "usermod -aG docker {{ ansible_env.SUDO_USER }}"
+    - name: Start and enable Docker service
+      systemd:
+        name: docker
+        enabled: yes
+        state: started
+
+    - name: Add user to the docker group
+      user:
+        name: "{{ ansible_user }}"
+        groups: docker
+        append: yes
