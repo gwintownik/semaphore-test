@@ -31,9 +31,9 @@
           - lsb-release
         state: present
 
-    - name: Add Docker’s official GPG key
+    - name: Add Dockers official GPG key
       ansible.builtin.command:
-        cmd: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
+        cmd: 'curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg'
 
     - name: Set up the stable repository
       ansible.builtin.command:
